@@ -70,6 +70,6 @@ var array = ['one', 'two', 'tree'];
 
 ConsoleModule.writeLine("Message: hello");
 ConsoleModule.writeLine("array elements: {0}", array);
-ConsoleModule.writeLine("{0}, {1}, {2}", true, "hello", 3);
+ConsoleModule.writeLine("{0}, {1}, {2}", true, "hello", 7);
 ConsoleModule.writeError("Error: {0}", "A fatal error has occurred.");
 ConsoleModule.writeWarning("Warning: {0}", "You are not allowed to do that!");

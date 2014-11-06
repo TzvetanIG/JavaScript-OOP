@@ -8,7 +8,6 @@ Object.prototype.extends = function (parent) {
         };
     }
 
-
     this.prototype = Object.create(parent.prototype);
     this.prototype.constructor = this;
 };
@@ -30,7 +29,7 @@ var Point2D = (function () {
     return Point2D;
 })();
 
-var Shape = (function Shape() {
+var Shape = (function () {
     function Shape(point, color) {
         this._point = point;
         this._color = color;
@@ -42,17 +41,18 @@ var Shape = (function Shape() {
             ', Y: ' + this._point._y +
             ' Color: ' + this._color;
 
-        Shape.prototype.getPoint = function () {
-            return this._point;
-        };
 
-        Shape.prototype.getColor = function () {
-            return this._color;
-        };
 
         return result;
     }
 
+    Shape.prototype.getPoint = function () {
+        return this._point;
+    };
+
+    Shape.prototype.getColor = function () {
+        return this._color;
+    };
     return Shape;
 })();
 
@@ -103,11 +103,16 @@ var Triangle = (function () {
 var Rectangle = (function () {
     function Rectangle(point, width, height, color) {
         Shape.call(this, point, color);
-        this._width = width;
+        this.setWidth(width);
         this._height = height;
     }
 
     Rectangle.extends(Shape);
+
+    Rectangle.prototype.setWidth = function (width) {
+        if(!width) { throw "Width should be positive number."};
+        this._width = width;
+    };
 
     Rectangle.prototype.getWidth = function () {
         return this._width;
@@ -173,3 +178,5 @@ var Segment = (function () {
     return Segment;
 })();
 
+
+var rec = new Rectangle(new Point2D(1,2), null, 1);

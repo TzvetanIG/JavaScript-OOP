@@ -9,7 +9,10 @@ var ListElement = (function(){
     }
 
     ListElement.prototype._setTitle = function(title){
-        //TODO Validation
+        if(!title){
+            throw new  ReferenceError('The title should not be empty.');
+        }
+
         this._title = title;
     };
 

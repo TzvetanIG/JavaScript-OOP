@@ -22,12 +22,18 @@ var Factory = Factory || {};
         button.innerHTML = 'New Section';
         button.name = 'addSectionButton';
 
+        var errorMessage = document.createElement("div");
+        errorMessage.setAttribute("name", "errorContainer");
+        errorMessage.className = "hideError";
+        errorMessage.innerHTML = "Enter section title.";
+
         var container = document.createElement("section");
 
         container.appendChild(header);
         container.appendChild(div);
         container.appendChild(input);
         container.appendChild(button);
+        container.appendChild(errorMessage);
         this._htmlElement = container;
     };
 

@@ -1,12 +1,12 @@
 var Factory = Factory || {};
-(function(Factory){
-    function Section(title){
-        ListElement.call(this,title);
+(function (Factory) {
+    function Section(title) {
+        ListElement.call(this, title);
     }
 
     Section.extends(ListElement);
 
-     Section.prototype._buildHtmlElement = function () {
+    Section.prototype._buildHtmlElement = function () {
         var header = document.createElement("h3");
         header.innerHTML = this._title;
 
@@ -22,9 +22,16 @@ var Factory = Factory || {};
         button.innerHTML = '+';
         button.name = 'addItemButton';
 
+        var errorMessage = document.createElement("div");
+        errorMessage.setAttribute("name", "errorSection");
+        errorMessage.className = "hideError";
+        errorMessage.innerHTML = "Enter item title.";
+
+
         var buttonDiv = document.createElement("div");
         buttonDiv.appendChild(input);
         buttonDiv.appendChild(button);
+        buttonDiv.appendChild(errorMessage);
 
         var section = document.createElement("article");
 
@@ -34,7 +41,7 @@ var Factory = Factory || {};
         this._htmlElement = section;
     };
 
-    Factory.getSection = function(title){
+    Factory.getSection = function (title) {
         return new Section(title);
     };
 
